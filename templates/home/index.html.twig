@@ -1,10 +1,102 @@
 {# templates/home/index.html.twig #}
-{% extends 'base.html.twig' %}
+{% extends 'home/base.html.twig' %}
 
 {# ... #}
 
 {% block body %}
-    <h1> Hello World <h1>
-    <h3> This page will contains multiple informations about the plaform and two button that give the user
-     access to Espace professeur or Espace parent <h3>
+    <!-- Navigation-->
+            <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+            <nav id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand"><a href="#page-top">Epp-platform</a></li>
+                    <li class="sidebar-nav-item"><a href="#page-top">Home</a></li>
+                    <li class="sidebar-nav-item"><a href="#about">About</a></li>
+                    <li class="sidebar-nav-item"><a href="#services">Services</a></li>
+                    <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <!-- Header-->
+            <header class="masthead d-flex align-items-center">
+                <div class="container px-4 px-lg-5 text-center">
+                    <h1 class="mb-1">Epp-platform</h1>
+                    <h3 class="mb-5"><em>Epp-platform (échange professeur-parent) est une plateforme de communication et d'échange d'informations entre les élèves de notre école et nos professeurs afin
+                                         d'assurer un bon suivi de déroulement des classes et des formations données par notre centre. Cette plateforme permet aux professeurs de rajouter des classes avec des
+                                         informations sur ces dernières comme les notes d'élèves inscrivent dans la classe, l'absence de l'élève et le commentaire donné par le professeur. La platformr un service
+                                         qui donne les statistique d'une classe donnée. Les parents d'élèves peuvent accéder aux données saisies par les professeurs associés
+                                         à leurs classes ainsi qu'aux bulletins scolaires de leurs enfants.
+                    </em></h3>
+                    <a class="btn btn-primary btn-xl" href="/login">Espace professeur</a>
+                    <a class="btn btn-primary btn-xl" href="">Espace parent</a>
+                </div>
+            </header>
+            <!-- About-->
+            <section class="content-section bg-light" id="about">
+                <div class="container px-4 px-lg-5 text-center">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-lg-10">
+                            <h2>Epp-platform est la meilleure solution digitale d'échange </h2>
+                            <p class="lead mb-5">
+                            Si vous avez des propositions d'amélioration pour notre site web, des remarques construites ou des problèmes d'utilisation.
+                            N'hésitez pas à nous contacter
+                                <a href="mailto:contact@epp-platform.com">Contactez nous</a>
+                                !
+                            </p>
+                            <a class="btn btn-dark btn-xl" href="#services">Nous offrons quoi </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Services-->
+            <section class="content-section bg-primary text-white text-center" id="services">
+                <div class="container px-4 px-lg-5">
+                    <div class="content-section-heading">
+                        <h3 class="text-secondary mb-0">Services</h3>
+                        <h2 class="mb-5"> Nous offrons </h2>
+                    </div>
+                    <div class="row gx-4 gx-lg-5">
+                        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                            <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-screen-smartphone"></i></span>
+                            <h4><strong>Innovation</strong></h4>
+                            <p class="text-faded mb-0">Nos cours se basent sur les dernières technologies </p>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                            <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
+                            <h4><strong>Diversité</strong></h4>
+                            <p class="text-faded mb-0"> Nous proposons des formations dans de diverses domaines et spécialités </p>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                            <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-like"></i></span>
+                            <h4><strong>Qualité </strong></h4>
+                            <p class="text-faded mb-0">
+                                Nous avons des centaines d'élèves qui poursuivent des cours chez nous
+                                <i class="fas fa-heart"></i>
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-mustache"></i></span>
+                            <h4><strong>Responsabilité</strong></h4>
+                            <p class="text-faded mb-0">Notre responsabilité et notre éthique consistent à répondre aux différents besoins en préservant l’intérêt à long terme de l’ensemble des parties prenantes</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Footer-->
+            <footer class="footer text-center" id="contact">
+                <div class="container px-4 px-lg-5">
+                    <ul class="list-inline mb-5">
+                        <li class="list-inline-item">
+                            <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-facebook"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
+                        </li>
+                    </ul>
+                    <p class="text-muted small mb-0">Copyright &copy; Your Website 2022</p>
+                </div>
+            </footer>
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
 {% endblock %}

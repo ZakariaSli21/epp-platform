@@ -9,11 +9,12 @@ Login Page
 {% endblock %}
 
 {% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets/css/login.css') }}"/>
 {% endblock %}
 
 
 {% block body %}
-    <section class="h-100 gradient-form" style="background-color: #eee;">
+    <section class="h-50" style="background-color: #eee;">
       <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-xl-10">
@@ -21,7 +22,6 @@ Login Page
               <div class="row g-0">
                 <div class="col-lg-6">
                   <div class="card-body p-md-5 mx-md-4">
-
                     <div class="text-center">
                       <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                         style="width: 185px;" alt="logo">
@@ -50,7 +50,6 @@ Login Page
                       <div class="text-center pt-1 mb-5 pb-1">
                         <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Log
                           in</button>
-                        <a class="text-muted" href="#!">Forgot password?</a>
                       </div>
 
                        <input type="hidden" name="_target_path" value="/professor-home">
@@ -61,6 +60,14 @@ Login Page
                       </div>
                     </form>
                   </div>
+                </div>
+                <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                    <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                <h4 class="mb-4 text-center"> Epp-platform </h4>
+                                <p class="small mb-0"> Vous pouvez vous authentifier via cette page, si vous n'avez toujours pas crée un faites ceci en cliquant sur Create New. En tant que professeur, vous pouvez ajouter/éditer des classes et des notes. Vous pouvez ajouter un élève à
+                                                       la liste des élèves de votre classe. Vous pouvez aussi rajouter des commentaires et des remarques d'un élève d'une classe.
+                                                        Si vous avez oublié votre mot de passe, merci de nous contacter ou de rapproucher vers votre responsable hiérarchique </p>
+                    </div>
                 </div>
               </div>
             </div>
