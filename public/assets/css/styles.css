@@ -108,11 +108,11 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   line-height: 1.2;
 }
 
-h1, .h1 {
+h1, .h1, h2, .h2 {
   font-size: calc(1.375rem + 1.5vw);
 }
 @media (min-width: 1200px) {
-  h1, .h1 {
+  h1, .h1, h2, .h2 {
     font-size: 2.5rem;
   }
 }
@@ -11481,7 +11481,7 @@ footer.footer .social-link:hover {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.masthead h1, .masthead .h1, .masthead-prof h1, .masthead-prof .h1 {
+.masthead h1, .masthead .h1, .masthead-prof h1, .masthead-prof .h1, .masthead-prof .h2, .masthead-prof h2 {
   font-size: 4rem;
   margin: 0;
   padding: 0;

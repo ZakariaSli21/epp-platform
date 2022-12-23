@@ -12,8 +12,9 @@
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <li class="sidebar-brand"><a href="#page-top"> Hello {{ app.user.username }}</a></li>
                         {% endif %}
-                        <li class="sidebar-nav-item"><a href="/professor-home"> Ajouter une classe</a></li>
+                        <li class="sidebar-nav-item"><a href="/create-class"> Ajouter une classe</a></li>
                         <li class="sidebar-nav-item"><a href="/professor-add-student"> Ajouter un élève </a></li>
+                        <li class="sidebar-nav-item"><a href="/students-list"> Liste des élèves </a></li>
                         <li class="sidebar-nav-item"><a href="{{ path('app_logout') }}">Logout</a></li>
                     </ul>
                 </nav>
@@ -22,11 +23,11 @@
                  <header class="masthead-prof d-flex align-items-center">
                      <div class="container px-4 px-lg-5 text-center">
                          <h1 class="mb-1">Epp-platform</h1>
-                         <h2 class="mb-1">Espace Professeur</h1>
+                         <h2 class="mb-4">Espace Professeur</h1>
                          <h3 class="mb-5"><em> Toutes les classes que vous avez crée se trouvent dans cette page. Vous pouvez éditer une classer ou créer une
                          nouvelle ainsi qu'ajouter un élève.
                          </em></h3>
-                         <a class="btn btn-primary btn-xl" href="">Ajouter une classe</a>
+                         <a class="btn btn-primary btn-xl" href="create-class">Ajouter une classe</a>
                          <a class="btn btn-primary btn-xl" href="/professor-add-student">Ajouter un élève</a>
                      </div>
                  </header>
@@ -40,26 +41,6 @@
                             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                             <a href="#" class="btn btn-primary mr-1">Editer la classe</a>
                             <a href="#" class="ml-1 btn btn-primary">Consulter la classe</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-4 text-center">
-                        <div class="card">
-                          <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-4 text-center">
-                        <div class="card">
-                          <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
                           </div>
                         </div>
                       </div>

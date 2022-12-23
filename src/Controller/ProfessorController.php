@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Student;
 use App\Entity\User;
 use App\Form\StudentFormType;
+use App\Repository\StudentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,7 +21,6 @@ class ProfessorController extends AbstractController
     {
         return $this->render('professor/index.html.twig');
     }
-
 
     #[Route('/professor-add-student', name: 'app_home_professor_add_student')]
     public function add_student(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
@@ -58,7 +58,7 @@ class ProfessorController extends AbstractController
              $entityManager->persist($user);
              $entityManager->flush();
 
-             return $this->redirectToRoute('app_home_professor_page');
+             return $this->redirectToRoute('app_students_list');
         }
 
         return $this->render('professor/add-student.html.twig', [
@@ -66,7 +66,19 @@ class ProfessorController extends AbstractController
             ]);
     }
 
+    #[Route('/create-class', name: 'app_create_class')]
+    public function class(): Response
+    {
+        return $this->render('professor/create-class.html.twig');
+    }
 
-
+    #[Route('/students-list', name: 'app_students_list')]
+    public function students_list(StudentRepository $studentRepository): Response
+    {
+        $student = $studentRepository->findAll();
+        return $this->render('professor/students-list.html.twig', [
+                'students' => $student,
+        ]);
+    }
 }
 

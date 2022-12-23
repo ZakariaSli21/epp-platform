@@ -25,7 +25,6 @@ Add Student page
                            <h5 class="mb-3 pb-1"> Espace Professeur </h5>
                          </div>
                          {{ form_start(StudentForm) }}
-                         <p class="text-center">Please sign up</p>
 
                          <div class="form-outline m-5">
                          {{ form_label(StudentForm.nom, 'nom eleve') }}
@@ -42,12 +41,16 @@ Add Student page
                          </div>
 
                          <div class="d-flex align-items-center justify-content-center pb-4">
-                                                 <p class="mb-0 me-2">Vous revenir à votre page d'acceuil ??</p>
-                                                 <button onclick="location.href='/professor-home'" type="button" class="btn btn-outline-danger">Page home professeur</button>
-                                               </div>
+                            <p class="mb-0 me-2">Vous revenir à votre page d'acceuil ??</p>
+                            <button onclick="location.href='/professor-home'" type="button" class="btn btn-outline-danger">Page home professeur</button>
+                         </div>
+
+                         <div class="d-flex align-items-center justify-content-center pb-4">
+                            <p class="mb-0 me-2">Vous voulez consulter la liste des élèves ?? </p>
+                            <button onclick="location.href='/students-list'" type="button" class="btn btn-outline-danger"> Consulter la liste des élèves </button>
+                         </div>
 
                          {{ form_end(StudentForm) }}
-
                        </div>
                      </div>
                      <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
