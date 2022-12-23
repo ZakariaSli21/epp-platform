@@ -105,6 +105,7 @@ class AddUser extends Command
 
         $hashedPassword = $this->passwordHasher->hashPassword($user, $plainPassword);
         $user->setPassword($hashedPassword);
+        $user->setRoles(['ROLE_PROFESSOR']);
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();

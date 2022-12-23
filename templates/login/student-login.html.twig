@@ -1,11 +1,11 @@
-{# templates/login/index.html.twig #}
+{# templates/login/student-login.html.twig #}
 {% extends 'base.html.twig' %}
 
 {# ... #}
 
 
 {% block title %}
-Login Page
+Espace parent : Login Page
 {% endblock %}
 
 {% block stylesheets %}
@@ -26,7 +26,7 @@ Login Page
                       <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                         style="width: 185px;" alt="logo">
                       <h4 class="mt-1 mb-3"> Epp-platform </h4>
-                      <h5 class="mb-3 pb-1"> Espace Professeur </h5>
+                      <h5 class="mb-3 pb-1"> Espace Parent </h5>
                     </div>
 
                     <form action="{{ path('app_login') }}" method="post">
@@ -35,7 +35,7 @@ Login Page
                       <div class="form-outline mb-4">
                                <label class="form-label" for="username">Email </label>
                                <input type="username" id="username" class="form-control" name="_username"
-                               value="{{ last_username }}" placeholder="email address please"/>
+                               placeholder="email address please"/>
                       </div>
                       <div class="form-outline mb-4">
                         <label class="form-label" for="password">Password</label>
@@ -52,22 +52,18 @@ Login Page
                           in</button>
                       </div>
 
-                       <input type="hidden" name="_target_path" value="/login-professor-success">
-
-                      <div class="d-flex align-items-center justify-content-center pb-4">
-                        <p class="mb-0 me-2">Don't have an account?</p>
-                        <button onclick="location.href='/register'" type="button" class="btn btn-outline-danger">Create new</button>
-                      </div>
+                       <input type="hidden" name="_target_path" value="/login-parent-success">
                     </form>
                   </div>
                 </div>
                 <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                     <div class="text-white px-3 py-4 p-md-5 mx-md-4">
                                 <h4 class="mb-4 text-center"> Epp-platform </h4>
-                                <h4 class="mb-4 text-center"> Espace Professeur </h4>
-                                <p class="small mb-0"> Vous pouvez vous authentifier via cette page, si vous n'avez toujours pas crée un faites ceci en cliquant sur Create New. En tant que professeur, vous pouvez ajouter/éditer des classes et des notes. Vous pouvez ajouter un élève à
-                                                       la liste des élèves de votre classe. Vous pouvez aussi rajouter des commentaires et des remarques d'un élève d'une classe.
-                                                        Si vous avez oublié votre mot de passe, merci de nous contacter ou de rapproucher vers votre responsable hiérarchique </p>
+                                <h4 class="mb-4 text-center"> Espace Parent </h4>
+                                <p class="small mb-0"> Vous pouvez vous authentifier en tant que parent via cette page, si vous n’avez pas vos informations de login,
+                                 merci de nous contacter. En tant que parent d’un élève de notre école, vous pouvez désormais voir les notes de votre enfant, ses absences,
+                                 les commentaires de ses profs ainsi que son bulletin scolaire.Si vous avez oublié votre mot de passe, merci de contacter notre école.
+                                 </p>
                     </div>
                 </div>
               </div>
