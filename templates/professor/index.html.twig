@@ -4,6 +4,82 @@
 {# ... #}
 
 {% block body %}
-    <h3> Ceci est la page home de "Espace professeur", cette page contiendra prochainement des cards des
-    classes associées au professeur connecté et il pourra ajouter des news classes ici <h3>
+     <!-- Navigation-->
+                <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+                <nav id="sidebar-wrapper">
+                    <ul class="sidebar-nav">
+                        <li class="sidebar-brand"><a href="#page-top">Espace porfesseur</a></li>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li class="sidebar-brand"><a href="#page-top">{{ app.user.username }}</a></li>
+                        {% endif %}
+                        <li class="sidebar-nav-item"><a href="/professor-home"> Ajouter une classe</a></li>
+                        <li class="sidebar-nav-item"><a href="/professor-home"> Ajouter un élève </a></li>
+                        <li class="sidebar-nav-item"><a href="{{ path('app_logout') }}">Logout</a></li>
+                    </ul>
+                </nav>
+     <!-- Classes -->
+                 <!-- Header-->
+                 <header class="masthead-prof d-flex align-items-center">
+                     <div class="container px-4 px-lg-5 text-center">
+                         <h1 class="mb-1">Epp-platform</h1>
+                         <h2 class="mb-1">Espace Professeur</h1>
+                         <h3 class="mb-5"><em> Toutes les classes que vous avez crée se trouvent dans cette page. Vous pouvez éditer une classer ou créer une
+                         nouvelle ainsi qu'ajouter un élève.
+                         </em></h3>
+                         <a class="btn btn-primary btn-xl" href="/login">Ajouter une classe</a>
+                         <a class="btn btn-primary btn-xl" href="">Ajouter un élève</a>
+                     </div>
+                 </header>
+                 <!-- Cards -->
+                 <div class="card-component m-5">
+                    <div class="row">
+                      <div class="col-sm-4 text-center">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title">Mathématique/physique </h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="btn btn-primary mr-1">Editer la classe</a>
+                            <a href="#" class="ml-1 btn btn-primary">Consulter la classe</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-4 text-center">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title">Special title treatment</h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-4 text-center">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title">Special title treatment</h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                 </div>
+    <!-- Footer-->
+                <footer class="footer text-center" id="contact">
+                    <div class="container px-4 px-lg-5">
+                        <ul class="list-inline mb-5">
+                            <li class="list-inline-item">
+                                <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
+                            </li>
+                        </ul>
+                        <p class="text-muted small mb-0">Copyright &copy; Your Website 2022</p>
+                    </div>
+                </footer>
 {% endblock %}

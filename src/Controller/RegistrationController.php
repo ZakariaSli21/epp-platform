@@ -20,6 +20,7 @@ class RegistrationController extends AbstractController
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
+        $user->setRoles(['ROLE_PROFESSOR']);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
@@ -33,7 +34,7 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_home_professor_page');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('registration/register.html.twig', [
