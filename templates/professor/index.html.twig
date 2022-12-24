@@ -39,11 +39,11 @@
                             <h5 class="card-title text-center">{{ classe.name }}</h5>
                             <p class="card-text text-center">{{ classe.description }}</p>
                             <div class="text-center">
-                                <a href="#" class="btn btn-primary mr-1">Consulter la classe</a>
+                                <a href="/class/{{ classe.id }}" class="btn btn-primary mr-1">Consulter la classe</a>
                                 <a href="#" class="ml-1 btn btn-primary">Editer les données</a>
                             </div>
                             <div class="text-center m-1">
-                                <a href="#" class="btn btn-primary mr-1"> Gestion des élèves  </a>
+                                <a href="/edit-class-students/{{ classe.id }}" class="btn btn-primary mr-1"> Gestion des élèves  </a>
                                 <a href="#" class="ml-1 btn btn-primary"> Statistique classe </a>
                             </div>
                           </div>

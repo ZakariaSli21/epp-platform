@@ -43,6 +43,7 @@ Students informations
         </tr>
       </thead>
       <tbody>
+            {% set i = 1 %}
             {% for student in students %}
                 <tr>
                       <th scope="row">{{ student.id }}</th>
@@ -52,6 +53,7 @@ Students informations
                       <td>{{ student.email }}</td>
                       <td>{{ student.password }}</td>
                 </tr>
+                {% set i = i + 1 %}
             {% endfor %}
       </tbody>
     </table>

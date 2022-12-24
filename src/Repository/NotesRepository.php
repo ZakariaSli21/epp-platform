@@ -30,7 +30,7 @@ class NotesRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Notes $entity, bool $flush = false): void
+    public function remove(Notes $entity, bool $flush): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -38,6 +38,33 @@ class NotesRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function findByClassId($value): array
+    {
+            return $this->createQueryBuilder('n')
+                    ->andWhere('n.class_id = :val')
+                    ->setParameter('val', $value)
+                    ->orderBy('n.student_id', 'ASC')
+                    ->getQuery()
+                    ->getResult()
+                    ;
+    }
+
+    public function findOneByClassId_StudentId($c_id ,$s_id): ?Notes
+    {
+            return $this->createQueryBuilder('tab')
+                    ->andWhere('tab.class_id = :val' , 'tab.student_id = :vale')
+                    ->setParameters([
+                                      'val' => $c_id,
+                                      'vale' => $s_id,
+                                   ])
+                    ->getQuery()
+                    ->getOneOrNullResult()
+                    ;
+    }
+
+
+
 
 //    /**
 //     * @return Notes[] Returns an array of Notes objects

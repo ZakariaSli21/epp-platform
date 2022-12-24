@@ -1,0 +1,151 @@
+{# templates/professor/edit-class-students.html.twig #}
+{% extends 'professor/base.html.twig' %}
+
+{% block title %}
+Edit class student
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets/css/login.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"><a href="#page-top">Espace porfesseur</a></li>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li class="sidebar-brand"><a href="#page-top"> Hello {{ app.user.username }}</a></li>
+        {% endif %}<li class="sidebar-nav-item"><a href="/professor-home"> Espace Professeur Home  </a></li>
+            <li class="sidebar-nav-item"><a href="/create-class"> Ajouter une classe</a></li>
+            <li class="sidebar-nav-item"><a href="/professor-add-student"> Ajouter un élève </a></li>
+            <li class="sidebar-nav-item"><a href="/students-list"> Liste des élèves </a></li>
+            <li class="sidebar-nav-item"><a href="{{ path('app_logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+    <!-- breadcrumb -->
+    <nav style="--bs-breadcrumb-divider: '>'; margin: 2%;">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/professor-home">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Ajouter un élève dans la classe : {{ class_name }}</li>
+      </ol>
+    </nav>
+
+     <section class="" style="background-color: #eee;">
+           <div class="container py-5 h-100">
+             <div class="row d-flex justify-content-center align-items-center h-100">
+               <div class="col-xl-10">
+                 <div class="card rounded-3 text-black">
+                   <div class="row g-0">
+                     <div class="col-lg-6">
+                       <div class="card-body p-md-5 mx-md-4">
+                         <div class="text-center">
+                           <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                             style="width: 185px;" alt="logo">
+                           <h4 class="mt-1 mb-3"> Espace Professeur </h4>
+                           <h5 class="mb-3 pb-1"> Class : {{ class_name }} </h5>
+                         </div>
+                         {{ form_start(AddStudentToClassForm) }}
+                            <p class="text-center">Add student to the class</p>
+
+                            <div class="form-outline m-5">
+                                 {{ form_label(AddStudentToClassForm.email, 'Email eleve') }}
+                                 {{ form_row(AddStudentToClassForm.email, {label: ' '}) }}
+                            </div>
+
+                            {% if error1 == true %}
+                                <div class="text-danger text-center"> Email eleve incorrect</div>
+                                </br>
+                            {% endif %}
+
+                            {% if exist1 == true %}
+                                <div class="text-danger text-center"> l'eleve est déja inscrit dans cette classe </div>
+                                </br>
+                            {% endif %}
+
+                            <div class="text-center pt-1 mt-3 mb-5 pb-1">
+                                <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Add student</button>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-center pb-4">
+                                <p class="mb-0 me-2">Vous voulez consulter la classe ?? </p>
+                                <button onclick="location.href='/class/{{ id_class }}'" type="button" class="btn btn-outline-danger"> Consult Class </button>
+                            </div>
+                         {{ form_end(AddStudentToClassForm) }}
+                       </div>
+                     </div>
+                     <div class="col-lg-6">
+                       <div class="card-body p-md-5 mx-md-4">
+                         <div class="text-center">
+                           <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                             style="width: 185px;" alt="logo">
+                           <h4 class="mt-1 mb-3"> Espace Professeur </h4>
+                           <h5 class="mb-3 pb-1"> Class : {{ class_name }} </h5>
+                         </div>
+                         {{ form_start(RemoveStudentToClassForm) }}
+                            <p class="text-center">Remove student from the class</p>
+
+                            <div class="form-outline m-5">
+                                 {{ form_label(RemoveStudentToClassForm.email, 'Email eleve') }}
+                                 {{ form_row(RemoveStudentToClassForm.email, {label: ' '}) }}
+                            </div>
+
+                            {% if error2 == true %}
+                                <div class="text-danger text-center"> Email eleve incorrect or this student donot exist in this class</div>
+                                </br>
+                            {% endif %}
+
+                            {% if exist2 == false %}
+                                <div class="text-danger text-center"> Deja l'eleve n'est pas inscrit dans cette classe </div>
+                                </br>
+                            {% endif %}
+
+                            <div class="text-center pt-1 mt-3 mb-5 pb-1">
+                                <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Remove student</button>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-center pb-4">
+                                <p class="mb-0 me-2">Vous voulez consulter la classe ?? </p>
+                                <button onclick="location.href='/class/{{ id_class }}'" type="button" class="btn btn-outline-danger"> Consult Class </button>
+                            </div>
+                         {{ form_end(RemoveStudentToClassForm) }}
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+     </section>
+    <h1 class="text-center m-4" > Liste des élève inscrits à cette classe </h1>
+    <table class="table table-striped table-hover table-students text-center m-4">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">nom eleve</th>
+              <th scope="col">prenom eleve </th>
+              <th scope="col">username eleve </th>
+              <th scope="col">email eleve </th>
+            </tr>
+          </thead>
+          <tbody>
+                {% set i = 1 %}
+                {% for inf in eleves %}
+                    <tr>
+                          <th scope="row">{{ i }} </th>
+                          <td>{{ inf.student.nom }}</td>
+                          <td>{{ inf.student.prenom }}</td>
+                          <td>{{ inf.student.username }}</td>
+                          <td>{{ inf.student.email }}</td>
+                          {% set i = i + 1 %}
+                    </tr>
+                {% endfor %}
+          </tbody>
+        </table>
+        <div class="m-4">
+                 <a href="/class/{{ id_class }}" class="btn btn-primary m-4"> Consulter les informatiosn de cette classe </a>
+                 <a href="#" class="btn btn-primary m-3"> Editer les données de cette classe </a>
+                 <a href="#" class="btn btn-primary m-3"> Consulter les statistiques de cette classe</a>
+                 <a href="#" class="btn btn-primary m-3"> Home Espace profeseur</a>
+        </div>
+{% endblock %}

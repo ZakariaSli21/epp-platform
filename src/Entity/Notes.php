@@ -16,14 +16,14 @@ class Notes
     #[ORM\Column]
     private ?int $student_id = null;
 
+    #[ORM\Column]
+    private ?int $class_id = null;
+
     #[ORM\Column(nullable: true)]
     private ?float $note = null;
 
     #[ORM\Column(nullable: true)]
     private ?float $nbr_absences = null;
-
-    #[ORM\Column]
-    private ?int $class_id = null;
 
     #[ORM\Column(nullable: true)]
     private ?float $coef_absences = null;
