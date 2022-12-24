@@ -10,6 +10,26 @@ Add Student page
 {% endblock %}
 
 {% block body %}
+    <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"><a href="#page-top">Espace porfesseur</a></li>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li class="sidebar-brand"><a href="#page-top"> Hello {{ app.user.username }}</a></li>
+        {% endif %}<li class="sidebar-nav-item"><a href="/professor-home"> Espace Professeur Home  </a></li>
+            <li class="sidebar-nav-item"><a href="/create-class"> Ajouter une classe</a></li>
+            <li class="sidebar-nav-item"><a href="/students-list"> Liste des élèves </a></li>
+            <li class="sidebar-nav-item"><a href="{{ path('app_logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+    <!-- breadcrumb -->
+    <nav style="--bs-breadcrumb-divider: '>'; margin: 2%;">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/professor-home">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Ajouter un élève</li>
+      </ol>
+    </nav>
+
      <section class="" style="background-color: #eee;">
            <div class="container py-5 h-100">
              <div class="row d-flex justify-content-center align-items-center h-100">
@@ -25,6 +45,7 @@ Add Student page
                            <h5 class="mb-3 pb-1"> Espace Professeur </h5>
                          </div>
                          {{ form_start(StudentForm) }}
+                         <p class="text-center">Please add student</p>
 
                          <div class="form-outline m-5">
                          {{ form_label(StudentForm.nom, 'nom eleve') }}
@@ -61,7 +82,7 @@ Add Student page
                                                      dans des classes, laisser des commentaires sur leurs comportement durant ces classes, saisir leurs notes ainsi que d'autres informations
                                                       en rapport avec l'eleve et la classe (absences,...). Voua allez etre redirige vers la page de la liste des eleves. Vous pourrez voir les données crée
                                                        automatiquement pour ce user (identifaint, email, pswd espace parent...).Si vous voulez revenir à votre page d'acceuil cliquez sur le button Home Page Professeur
-                                                       endessous du formulaires d'add student.</p>
+                                                       endessous du formulaires d'add student. </p>
                                          </div>
                      </div>
                    </div>

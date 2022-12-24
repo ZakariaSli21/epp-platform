@@ -31,21 +31,25 @@
                          <a class="btn btn-primary btn-xl" href="/professor-add-student">Ajouter un élève</a>
                      </div>
                  </header>
+
                  <!-- Cards -->
-                 <div class="card-component m-5">
-                    <div class="row">
-                      <div class="col-sm-4 text-center">
-                        <div class="card">
+                {% for classe in classes %}
+                    <div class="card m-4" style="width: 23rem;display: inline-block;">
                           <div class="card-body">
-                            <h5 class="card-title">Mathématique/physique </h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary mr-1">Editer la classe</a>
-                            <a href="#" class="ml-1 btn btn-primary">Consulter la classe</a>
+                            <h5 class="card-title text-center">{{ classe.name }}</h5>
+                            <p class="card-text text-center">{{ classe.description }}</p>
+                            <div class="text-center">
+                                <a href="#" class="btn btn-primary mr-1">Consulter la classe</a>
+                                <a href="#" class="ml-1 btn btn-primary">Editer les données</a>
+                            </div>
+                            <div class="text-center m-1">
+                                <a href="#" class="btn btn-primary mr-1"> Gestion des élèves  </a>
+                                <a href="#" class="ml-1 btn btn-primary"> Statistique classe </a>
+                            </div>
                           </div>
-                        </div>
-                      </div>
                     </div>
-                 </div>
+                {% endfor %}
+
     <!-- Footer-->
                 <footer class="footer text-center" id="contact">
                     <div class="container px-4 px-lg-5">

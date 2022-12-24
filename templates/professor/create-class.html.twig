@@ -10,5 +10,81 @@ Create class
 {% endblock %}
 
 {% block body %}
-    <h1> Cette page est pour la creation d'une classe </h1>
+    <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"><a href="#page-top">Espace porfesseur</a></li>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li class="sidebar-brand"><a href="#page-top"> Hello {{ app.user.username }}</a></li>
+        {% endif %}<li class="sidebar-nav-item"><a href="/professor-home"> Espace Professeur Home  </a></li>
+            <li class="sidebar-nav-item"><a href="/professor-add-student"> Ajouter un élève </a></li>
+            <li class="sidebar-nav-item"><a href="/students-list"> Liste des élèves </a></li>
+            <li class="sidebar-nav-item"><a href="{{ path('app_logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- breadcrumb -->
+    <nav style="--bs-breadcrumb-divider: '>'; margin: 2%;">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/professor-home">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Ajouter une classe</li>
+      </ol>
+    </nav>
+
+    <section class="" style="background-color: #eee;">
+               <div class="container py-5 h-100">
+                 <div class="row d-flex justify-content-center align-items-center h-100">
+                   <div class="col-xl-10">
+                     <div class="card rounded-3 text-black">
+                       <div class="row g-0">
+                         <div class="col-lg-6">
+                           <div class="card-body p-md-5 mx-md-4">
+                             <div class="text-center">
+                               <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                                 style="width: 185px;" alt="logo">
+                               <h4 class="mt-1 mb-3"> Epp-platform </h4>
+                               <h5 class="mb-3 pb-1"> Espace Professeur </h5>
+                             </div>
+                             {{ form_start(CreateClassForm) }}
+                             <p class="text-center">Please create class</p>
+
+                             <div class="form-outline m-5">
+                             {{ form_label(CreateClassForm.name, 'Nom de la classe :') }}
+                             {{ form_row(CreateClassForm.name, {label: ' '}) }}
+                             </div>
+
+                             <div class="form-outline m-5">
+                             {{ form_label(CreateClassForm.description, 'Descriprion de la classe : ') }}
+                             {{ form_row(CreateClassForm.description, {label: ' '}) }}
+                             </div>
+
+                             <div class="text-center pt-1 mt-3 mb-5 pb-1">
+                               <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Add student</button>
+                             </div>
+
+                             <div class="d-flex align-items-center justify-content-center pb-4">
+                                <p class="mb-0 me-2">Vous revenir à votre page d'acceuil ??</p>
+                                <button onclick="location.href='/professor-home'" type="button" class="btn btn-outline-danger">Page home professeur</button>
+                             </div>
+
+                             {{ form_end(CreateClassForm) }}
+                           </div>
+                         </div>
+                         <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                                    <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                                     <h4 class="mb-4 text-center"> Epp-platform </h4>
+                                                     <h4 class="mb-4 text-center"> Espace Professeur</h4>
+                                                     <p class="small mb-0"> Hello {{ app.user.username }}, Vous pouvez créer
+                                                     une classe via cette page. Vous allez etre redirigé vers la page de la
+                                                     classe que vous allez crée afin de rajouter les eleves qi sont inscrits à ce cours. <br/>
+
+                                                       Vous pouvez grandir le champs de description classe pour avoir une vision plus clair de votre saisie.</p>
+                                    </div>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+         </section>
 {% endblock %}

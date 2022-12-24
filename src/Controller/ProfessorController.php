@@ -4,8 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Student;
 use App\Entity\User;
+use App\Entity\Classe;
 use App\Form\StudentFormType;
+use App\Form\CreateClassFormType;
 use App\Repository\StudentRepository;
+use App\Repository\ClasseRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,9 +20,13 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class ProfessorController extends AbstractController
 {
     #[Route('/professor-home', name: 'app_home_professor_page')]
-    public function home(): Response
+    public function home(ClasseRepository $classeRepository): Response
     {
-        return $this->render('professor/index.html.twig');
+        $id_professor = $this->getUser()->getId();
+        $classe = $classeRepository->findBy(['professeur_id' => $id_professor]);;
+        return $this->render('professor/index.html.twig',[
+                'classes' => $classe,
+        ]);
     }
 
     #[Route('/professor-add-student', name: 'app_home_professor_add_student')]
@@ -64,12 +71,6 @@ class ProfessorController extends AbstractController
         return $this->render('professor/add-student.html.twig', [
             'StudentForm' => $form->createView(),
             ]);
-    }
-
-    #[Route('/create-class', name: 'app_create_class')]
-    public function class(): Response
-    {
-        return $this->render('professor/create-class.html.twig');
     }
 
     #[Route('/students-list', name: 'app_students_list')]

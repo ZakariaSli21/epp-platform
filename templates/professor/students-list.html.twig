@@ -2,7 +2,7 @@
 {% extends 'professor/base.html.twig' %}
 
 {% block title %}
-Create class
+Students informations
 {% endblock %}
 
 {% block stylesheets %}
@@ -11,18 +11,25 @@ Create class
 
 {% block body %}
     <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
-                    <nav id="sidebar-wrapper">
-                        <ul class="sidebar-nav">
-                            <li class="sidebar-brand"><a href="#page-top">Espace porfesseur</a></li>
-                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                            <li class="sidebar-brand"><a href="#page-top"> Hello {{ app.user.username }}</a></li>
-                            {% endif %}
-                            <li class="sidebar-nav-item"><a href="/professor-home"> Espace Professeur Home  </a></li>
-                            <li class="sidebar-nav-item"><a href="/create-class"> Ajouter une classe</a></li>
-                            <li class="sidebar-nav-item"><a href="/professor-add-student"> Ajouter un élève </a></li>
-                            <li class="sidebar-nav-item"><a href="{{ path('app_logout') }}">Logout</a></li>
-                        </ul>
-                    </nav>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"><a href="#page-top">Espace porfesseur</a></li>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li class="sidebar-brand"><a href="#page-top"> Hello {{ app.user.username }}</a></li>
+        {% endif %}<li class="sidebar-nav-item"><a href="/professor-home"> Espace Professeur Home  </a></li>
+            <li class="sidebar-nav-item"><a href="/create-class"> Ajouter une classe</a></li>
+            <li class="sidebar-nav-item"><a href="/professor-add-student"> Ajouter un élève </a></li>
+            <li class="sidebar-nav-item"><a href="{{ path('app_logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+    <!-- breadcrumb -->
+    <nav style="--bs-breadcrumb-divider: '>'; margin: 2%;">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/professor-home">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Liste des élèves</li>
+      </ol>
+    </nav>
+
     <h1 class="text-center mt-4 mb-4"> Table d'informations des élèves </h1>
     <table class="table table-striped table-hover table-students text-center m-4">
       <thead>
