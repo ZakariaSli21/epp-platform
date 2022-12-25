@@ -1,4 +1,4 @@
-{# templates/professor/consult-class.html.twig #}
+{# templates/professor/edit-class-informations.html.twig #}
 {% extends 'professor/base.html.twig' %}
 
 {% block title %}
@@ -46,6 +46,10 @@ edit class informations
                              {{ form_start(EditForm) }}
                              <p class="text-center">Edit student informations in this class</p>
 
+                             {% if error == true %}
+                                <div class="text-danger text-center"> L'eleve id n'est pas dans la liste des eleves inscrits a cette classe (verifiez votre saisie) </div>
+                                </br>
+                             {% endif %}
                              <div class="form-outline text-center mt-1">
                                 {{ form_label(EditForm.studentid, 'Eleve id (voir tableau ci-dessous) ') }}
                                 {{ form_row(EditForm.studentid, {label: ' '}) }}
@@ -90,10 +94,6 @@ edit class informations
                                 {{ form_label(EditForm.commentaire, 'Commentaire : ') }}
                                 {{ form_row(EditForm.commentaire, {label: ' '}) }}
                              </div>
-                             {% if error == true %}
-                                <div class="text-danger text-center"> L'eleve id n'est pas dans la liste des eleves inscrits a cette classe (verifiez votre saisie) </div>
-                                </br>
-                             {% endif %}
                              <div class="text-center pt-1 mt-3 mb-5 pb-1">
                                <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Save change</button>
                              </div>

@@ -1,0 +1,86 @@
+{# templates/student/consult-notes.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Consult notes {{ app.user.username }}
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets/css/login.css') }}"/>
+{% endblock %}
+
+{% block body %}
+
+    <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"><a href="#page-top">Espace Parent</a></li>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li class="sidebar-brand"><a href="#page-top"> Hello {{ app.user.username }}</a></li>
+        {% endif %}<li class="sidebar-nav-item"><a href="/parent-home"> Espace Parent Home  </a></li>
+            <li class="sidebar-nav-item"><a href="#"> Acceder aux notes  </a></li>
+            <li class="sidebar-nav-item"><a href="#"> Acceder au bulletin </a></li>
+            <li class="sidebar-nav-item"><a href="{{ path('app_logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+    <nav style="--bs-breadcrumb-divider: '>'; margin: 2%;">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/parent-home">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Les note d'élève  : {{ student_name }}</li>
+      </ol>
+    </nav>
+    <h1 class="text-center mt-4 mb-4"> Les notes de : {{ student_name }}  </h1>
+        <table class="table table-striped table-hover table-students text-center m-4">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col"> nom de la classe </th>
+              <th scope="col"> note 1 </th>
+              <th scope="col"> coef 1   </th>
+              <th scope="col"> note 2 </th>
+              <th scope="col"> coef 2  </th>
+              <th scope="col"> note 3  </th>
+              <th scope="col"> coef 3  </th>
+              <th scope="col"> nombre d'absences</th>
+              <th scope="col"> La moyenne finale  </th>
+              <th scope="col">ceofficient note </th>
+              <th scope="col">Username professeur </th>
+              <th scope="col">commentaire de professeur </th>
+            </tr>
+          </thead>
+          <tbody>
+                {% set i = 1 %}
+                {% for inf in informations %}
+                    <tr>
+                          <th scope="row">{{ i }} </th>
+                          <td> {{ inf.classe.name }}</td>
+                          <td> {{ inf.notes.note1 }} </td>
+                          <td> {{ inf.notes.coef1 }} </td>
+                          <td> {{ inf.notes.note2 }} </td>
+                          <td> {{ inf.notes.coef2 }} </td>
+                          <td> {{ inf.notes.note3 }} </td>
+                          <td> {{ inf.notes.coef3 }} </td>
+                          <td>{{ inf.notes.nbrAbsences }}</td>
+                          <td>{{ inf.notes.note }}</td>
+                          <td>{{ inf.notes.coefMoyenne }}</td>
+                          <td>{{ inf.professorName }}</td>
+                          <td>{{ inf.notes.professorCommentaire }}</td>                          {% set i = i + 1 %}
+                    </tr>
+                {% endfor %}
+          </tbody>
+        </table>
+        <div class="row">
+              <div class="col-sm-8">
+                    <a href="/parent-home" class="btn btn-primary m-4"> Retourner à la page d'acceuil (Espace Parent)</a>
+              </div>
+              <div class="col-sm-2">
+                    <h5 class="text-center border border-2"> Moyenne generale : </h5>
+              </div>
+              <div class="col-sm-2">
+                    <h5 class="text-center border border-danger border-2"> {{ moy_gen }} </h5>
+              </div>
+        </div>
+
+
+
+{% endblock %}

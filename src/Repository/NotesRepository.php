@@ -39,6 +39,17 @@ class NotesRepository extends ServiceEntityRepository
         }
     }
 
+    // retourne les notes d'un eleve
+    public function findByStudentId($value): array
+    {
+            return $this->createQueryBuilder('n')
+                    ->andWhere('n.student_id = :val')
+                    ->setParameter('val', $value)
+                    ->getQuery()
+                    ->getResult()
+                    ;
+    }
+
     // retourne les notes d'une classe
     public function findByClassId($value): array
     {

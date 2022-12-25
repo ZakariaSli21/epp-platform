@@ -116,7 +116,7 @@ class ClassController extends AbstractController
 
                     $entityManager->persist($notes1);
                     $entityManager->flush();
-                    return $this->redirectToRoute('app_consult_class_id',array('id' => $id));
+                    return $this->redirectToRoute('app_edit_class_students',array('id' => $id));
                 }
              }
         }

@@ -1,3 +1,4 @@
+{# templates/student/index.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block title %}
@@ -17,9 +18,37 @@ Espace parent : home page
             <li class="sidebar-brand"><a href="#page-top"> Hello {{ app.user.username }}</a></li>
         {% endif %}<li class="sidebar-nav-item"><a href="/parent-home"> Espace Parent Home  </a></li>
             <li class="sidebar-nav-item"><a href="#"> Acceder aux notes  </a></li>
-            <li class="sidebar-nav-item"><a href="#"> Acceder aux bulletins </a></li>
+            <li class="sidebar-nav-item"><a href="#"> Acceder au bulletin </a></li>
             <li class="sidebar-nav-item"><a href="{{ path('app_logout') }}">Logout</a></li>
         </ul>
     </nav>
-    <h1> Cette page est la page home pour l'espace parent. elle contiendra prochainement l'acces pour les notes, bulletins...</h1>
+                <header class="masthead-prof d-flex align-items-center">
+                     <div class="container px-4 px-lg-5 text-center">
+                         <h1 class="mb-1">Epp-platform</h1>
+                         <h2 class="mb-4">Espace Professeur</h1>
+                         <h3 class="mb-5"><em> Toutes les classes que vous avez crée se trouvent dans cette page. Vous pouvez éditer une classer ou créer une
+                         nouvelle ainsi qu'ajouter un élève.
+                         </em></h3>
+                         <a class="btn btn-primary btn-xl" href="/consult-notes">Acceder aux notes</a>
+                         <a class="btn btn-primary btn-xl" href="">Acceder aux bulletin</a>
+                     </div>
+                 </header>
+
+                <!-- Footer-->
+                <footer class="footer text-center" id="contact">
+                    <div class="container px-4 px-lg-5">
+                        <ul class="list-inline mb-5">
+                            <li class="list-inline-item">
+                                <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
+                            </li>
+                        </ul>
+                        <p class="text-muted small mb-0">Copyright &copy; Your Website 2022</p>
+                    </div>
+                </footer>
 {% endblock %}

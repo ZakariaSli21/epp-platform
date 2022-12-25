@@ -3,8 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Student;
+use App\Entity\Notes;
 use App\Entity\User;
-use App\Form\StudentFormType;
+use App\Entity\NotesDetails;
+use App\Entity\Classe;
+use App\Service\StudentNotesService;
+use App\Repository\StudentRepository;
+use App\Repository\UserRepository;
+use App\Repository\ClasseRepository;
+use App\Repository\NotesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,5 +26,35 @@ class StudentController extends AbstractController
     public function home(): Response
     {
         return $this->render('student/index.html.twig');
+    }
+
+    #[Route('/consult-notes', name: 'app_consult_note_page')]
+    public function notes_page(StudentNotesService $studentNotesService, UserRepository $userRepository, NotesRepository $notesRepository, ClasseRepository $classeRepository, StudentRepository $studentRepository): Response
+    {
+        $student = $studentRepository->findOneByEmail($this->getUser()->getEmail());
+        $student_name = $student->getPrenom(). ' ' .$student->getNom();
+        $moyenne_generale = $studentNotesService->getMoyenneGenerale($student->getId(), $notesRepository);
+
+        $notes = $notesRepository->findByStudentId($student->getId());
+
+        $notesDetails = [];
+
+        foreach ($notes as $note) {
+            $class_id = $note->getClassId();
+            $classe = $classeRepository->findOneByClassId($class_id);
+            $professor = $userRepository->getUserbyId($classe->getProfesseurId());
+
+            $notes_d = new NotesDetails();
+            $notes_d->setNotes($note);
+            $notes_d->setClasse($classe);
+            $notes_d->setProfessorName($professor->getUsername());
+            array_push($notesDetails, $notes_d);
+        }
+
+        return $this->render('student/consult-notes.html.twig',[
+                        'student_name' => $student_name,
+                        'informations' => $notesDetails,
+                        'moy_gen' => number_format($moyenne_generale, 2, '.', ''),
+        ]);
     }
 }

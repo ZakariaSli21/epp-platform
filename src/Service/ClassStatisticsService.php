@@ -10,8 +10,6 @@ use App\Entity\Student;
 
 class ClassStatisticsService
 {
-    public StudentRepository $studentRepository;
-    public ClasseRepository $classeRepository;
 
     public function getMaxNoteInClass(int $class_id, NotesRepository $notesRepository): ?float
     {
