@@ -8,7 +8,7 @@
                 <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
                 <nav id="sidebar-wrapper">
                     <ul class="sidebar-nav">
-                        <li class="sidebar-brand"><a href="#page-top">Espace porfesseur</a></li>
+                        <li class="sidebar-brand"><a href="#page-top">Espace professeur</a></li>
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <li class="sidebar-brand"><a href="#page-top"> Hello {{ app.user.username }}</a></li>
                         {% endif %}
@@ -40,7 +40,7 @@
                             <p class="card-text text-center">{{ classe.description }}</p>
                             <div class="text-center">
                                 <a href="/class/{{ classe.id }}" class="btn btn-primary mr-1">Consulter la classe</a>
-                                <a href="#" class="ml-1 btn btn-primary">Editer les données</a>
+                                <a href="/edit-class-informations/{{ classe.id }}" class="ml-1 btn btn-primary">Editer les données</a>
                             </div>
                             <div class="text-center m-1">
                                 <a href="/edit-class-students/{{ classe.id }}" class="btn btn-primary mr-1"> Gestion des élèves  </a>

@@ -34,11 +34,16 @@ class
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">nom eleve</th>
-              <th scope="col">prenom eleve </th>
-              <th scope="col">nombres absences</th>
-              <th scope="col">coefficient d'absences</th>
-              <th scope="col">note  </th>
+              <th scope="col"> nom eleve</th>
+              <th scope="col"> prenom eleve </th>
+              <th scope="col"> note 1 </th>
+              <th scope="col"> coef 1   </th>
+              <th scope="col"> note 2 </th>
+              <th scope="col"> coef 2  </th>
+              <th scope="col"> note 3  </th>
+              <th scope="col"> coef 3  </th>
+              <th scope="col"> nombre d'absences</th>
+              <th scope="col"> La moyenne finale  </th>
               <th scope="col">ceofficient note </th>
               <th scope="col">commentaire de professeur </th>
             </tr>
@@ -50,8 +55,13 @@ class
                           <th scope="row">{{ i }} </th>
                           <td>{{ inf.student.nom }}</td>
                           <td>{{ inf.student.prenom }}</td>
+                          <td> {{ inf.notes.note1 }} </td>
+                          <td> {{ inf.notes.coef1 }} </td>
+                          <td> {{ inf.notes.note2 }} </td>
+                          <td> {{ inf.notes.coef2 }} </td>
+                          <td> {{ inf.notes.note3 }} </td>
+                          <td> {{ inf.notes.coef3 }} </td>
                           <td>{{ inf.notes.nbrAbsences }}</td>
-                          <td>{{ inf.notes.coefAbsences }}</td>
                           <td>{{ inf.notes.note }}</td>
                           <td>{{ inf.notes.coefMoyenne }}</td>
                           <td>{{ inf.notes.professorCommentaire }}</td>
@@ -62,8 +72,8 @@ class
         </table>
         <div class="m-4">
                  <a href="/edit-class-students/{{ id_class }}" class="btn btn-primary m-4"> Ajouter/Supprimer un élève dans cette classe </a>
-                 <a href="#" class="btn btn-primary m-3"> Editer les données de cette classe </a>
-                 <a href="#" class="btn btn-primary m-3"> Consulter les statistiques de cette classe</a>
-                 <a href="#" class="btn btn-primary m-3"> Home Espace profeseur</a>
+                 <a href="/edit-class-informations/{{ id_class }}" class="btn btn-primary m-4"> Editer les données de cette classe </a>
+                 <a href="#" class="btn btn-primary m-4"> Consulter les statistiques de cette classe</a>
+                 <a href="/students-list" class="btn btn-primary m-4"> Liste des eleves</a>
         </div>
 {% endblock %}

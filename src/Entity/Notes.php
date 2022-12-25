@@ -26,13 +26,31 @@ class Notes
     private ?float $nbr_absences = null;
 
     #[ORM\Column(nullable: true)]
-    private ?float $coef_absences = null;
+    private ?float $note_moyenne = null;
 
     #[ORM\Column(nullable: true)]
     private ?float $coef_moyenne = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $professor_commentaire = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $note1 = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $coef1 = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $note2 = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $coef2 = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $note3 = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $coef3 = null;
 
     public function getId(): ?int
     {
@@ -56,12 +74,23 @@ class Notes
         return $this->note;
     }
 
-    public function setNote(?float $note): self
+    public function setNoteAutomaticaly(): self
     {
-        $this->note = $note;
-
-        return $this;
+         $nume = $this->note1 * $this->coef1 + $this->note2 * $this->coef2 + $this->note3 * $this->coef3;
+         $denum = $this->coef1 + $this->coef2 + $this->coef3;
+         if($denum==0){
+            $denum=1;
+         }
+         $this->note = $nume/$denum;
+         return $this;
     }
+
+    public function setNote(?float $note): self
+        {
+            $this->note = $note;
+
+            return $this;
+        }
 
     public function getNbrAbsences(): ?float
     {
@@ -87,14 +116,14 @@ class Notes
         return $this;
     }
 
-    public function getCoefAbsences(): ?float
+    public function getNoteMoyenne(): ?float
     {
-        return $this->coef_absences;
+        return $this->note_moyenne;
     }
 
-    public function setCoefAbsences(?float $coef_absences): self
+    public function setNoteMoyenne(?float $note_moyenne): self
     {
-        $this->coef_absences = $coef_absences;
+        $this->note_moyenne = $note_moyenne;
 
         return $this;
     }
@@ -119,6 +148,78 @@ class Notes
     public function setProfessorCommentaire(?string $professor_commentaire): self
     {
         $this->professor_commentaire = $professor_commentaire;
+
+        return $this;
+    }
+
+    public function getNote1(): ?float
+    {
+        return $this->note1;
+    }
+
+    public function setNote1(?float $note1): self
+    {
+        $this->note1 = $note1;
+
+        return $this;
+    }
+
+    public function getCoef1(): ?float
+    {
+        return $this->coef1;
+    }
+
+    public function setCoef1(?float $coef1): self
+    {
+        $this->coef1 = $coef1;
+
+        return $this;
+    }
+
+    public function getNote2(): ?float
+    {
+        return $this->note2;
+    }
+
+    public function setNote2(?float $note2): self
+    {
+        $this->note2 = $note2;
+
+        return $this;
+    }
+
+    public function getCoef2(): ?float
+    {
+        return $this->coef2;
+    }
+
+    public function setCoef2(?float $coef2): self
+    {
+        $this->coef2 = $coef2;
+
+        return $this;
+    }
+
+    public function getNote3(): ?float
+    {
+        return $this->note3;
+    }
+
+    public function setNote3(?float $note3): self
+    {
+        $this->note3 = $note3;
+
+        return $this;
+    }
+
+    public function getCoef3(): ?float
+    {
+        return $this->coef3;
+    }
+
+    public function setCoef3(?float $coef3): self
+    {
+        $this->coef3 = $coef3;
 
         return $this;
     }
