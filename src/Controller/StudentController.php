@@ -57,4 +57,42 @@ class StudentController extends AbstractController
                         'moy_gen' => number_format($moyenne_generale, 2, '.', ''),
         ]);
     }
+
+    #[Route('/consult-notes/trimestre/{id}', name: 'app_consult_note_trimestre_page')]
+    public function notes_trimestre_page(int $id, StudentNotesService $studentNotesService, UserRepository $userRepository, NotesRepository $notesRepository, ClasseRepository $classeRepository, StudentRepository $studentRepository): Response
+    {
+        $student = $studentRepository->findOneByEmail($this->getUser()->getEmail());
+        $student_name = $student->getPrenom(). ' ' .$student->getNom();
+        $moyenne_generale = $studentNotesService->getMoyenneTrimestreGenerale($student->getId(), $notesRepository, $classeRepository, $id);
+
+        $notes = $notesRepository->findByStudentId($student->getId());
+
+        $notesDetails = [];
+
+        foreach ($notes as $note) {
+            $class_id = $note->getClassId();
+            $classe = $classeRepository->findOneByClassId($class_id);
+            $professor = $userRepository->getUserbyId($classe->getProfesseurId());
+            if($classe->getTrimestre()==$id){
+            $notes_d = new NotesDetails();
+            $notes_d->setNotes($note);
+            $notes_d->setClasse($classe);
+            $notes_d->setProfessorName($professor->getUsername());
+            array_push($notesDetails, $notes_d);
+            }
+        }
+
+        return $this->render('student/consult-notes-trimestre.html.twig',[
+                        'id' => $id,
+                        'student_name' => $student_name,
+                        'informations' => $notesDetails,
+                        'moy_gen' => number_format($moyenne_generale, 2, '.', ''),
+        ]);
+    }
+
+    #[Route('/consult-bulletin', name: 'app_consult_bulletin_page')]
+    public function notes_page(StudentNotesService $studentNotesService, UserRepository $userRepository, NotesRepository $notesRepository, ClasseRepository $classeRepository, StudentRepository $studentRepository): Response
+    {
+
+    }
 }

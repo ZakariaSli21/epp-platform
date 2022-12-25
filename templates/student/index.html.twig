@@ -15,25 +15,55 @@ Espace parent : home page
         <ul class="sidebar-nav">
             <li class="sidebar-brand"><a href="#page-top">Espace Parent</a></li>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <li class="sidebar-brand"><a href="#page-top"> Hello {{ app.user.username }}</a></li>
-        {% endif %}<li class="sidebar-nav-item"><a href="/parent-home"> Espace Parent Home  </a></li>
-            <li class="sidebar-nav-item"><a href="#"> Acceder aux notes  </a></li>
-            <li class="sidebar-nav-item"><a href="#"> Acceder au bulletin </a></li>
+            <li class="sidebar-brand"><a href="#page-top"> Parent {{ app.user.username }}</a></li>
+        {% endif %}
+            <li class="sidebar-nav-item"><a href="/consult-notes"> Acceder aux notes annuelle </a></li>
+            <li class="sidebar-nav-item"><a href="#"> Acceder au bulletin annuel </a></li>
+            <li class="sidebar-nav-item"><a href="#contact"> Notes/Bulletin trimestriels </a></li>
             <li class="sidebar-nav-item"><a href="{{ path('app_logout') }}">Logout</a></li>
         </ul>
     </nav>
-                <header class="masthead-prof d-flex align-items-center">
+                <header class="masthead d-flex align-items-center">
                      <div class="container px-4 px-lg-5 text-center">
                          <h1 class="mb-1">Epp-platform</h1>
-                         <h2 class="mb-4">Espace Professeur</h1>
-                         <h3 class="mb-5"><em> Toutes les classes que vous avez crée se trouvent dans cette page. Vous pouvez éditer une classer ou créer une
-                         nouvelle ainsi qu'ajouter un élève.
+                         <h2 class="mb-4">Espace Parent</h2>
+                         <h3 class="mb-5"><em> Vous pouvez sur cette espace d'accéder aux notes et aux  bulletins
+                         trimestriel et annuel de cette année scolaire. Vous pouvez accéder aux notes/bulletin anuels via les boutons
+                         ci-dessous. Pour les notes/bulletins trimestriels, vous pouvez les voir en utilisant les cartes en bas de
+                         cette page ou le navbar en haut à droite.
                          </em></h3>
-                         <a class="btn btn-primary btn-xl" href="/consult-notes">Acceder aux notes</a>
-                         <a class="btn btn-primary btn-xl" href="">Acceder aux bulletin</a>
+                         <a class="btn btn-primary btn-xl" href="/consult-notes">Acceder aux notes annuelle</a>
+                         <a class="btn btn-primary btn-xl" href="">Acceder au bulletin annuel</a>
                      </div>
-                 </header>
-
+                 </header >
+                 <h4 class="m-4 text-center"> Données trimestrielles </h4>
+                <div class="card m-4" style="width: 23rem;display: inline-block;">
+                          <div class="card-body">
+                            <h5 class="card-title text-center mb-4">Trimestre 1</h5>
+                            <div class="text-center">
+                                <a href="/consult-notes/trimestre/1" class="btn btn-primary mr-1"> Note du trimsetre</a>
+                                <a href="#" class="ml-1 btn btn-primary"> Bulletin trimestriel</a>
+                            </div>
+                          </div>
+                 </div>
+                <div class="card m-4" style="width: 23rem;display: inline-block;">
+                          <div class="card-body">
+                            <h5 class="card-title text-center mb-4">Trimestre 2</h5>
+                            <div class="text-center">
+                                 <a href="/consult-notes/trimestre/2" class="btn btn-primary mr-1"> Note du trimsetre</a>
+                                 <a href="#" class="ml-1 btn btn-primary"> Bulletin trimestriel</a>
+                            </div>
+                          </div>
+                 </div>
+                <div class="card m-4" style="width: 23rem;display: inline-block;">
+                          <div class="card-body">
+                            <h5 class="card-title text-center mb-4">Trimestre 3</h5>
+                            <div class="text-center">
+                              <a href="/consult-notes/trimestre/3" class="btn btn-primary mr-1"> Note du trimsetre</a>
+                              <a href="#" class="ml-1 btn btn-primary"> Bulletin trimestriel</a>
+                            </div>
+                          </div>
+                 </div>
                 <!-- Footer-->
                 <footer class="footer text-center" id="contact">
                     <div class="container px-4 px-lg-5">

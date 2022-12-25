@@ -26,9 +26,6 @@ class Notes
     private ?float $nbr_absences = null;
 
     #[ORM\Column(nullable: true)]
-    private ?float $note_moyenne = null;
-
-    #[ORM\Column(nullable: true)]
     private ?float $coef_moyenne = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -112,18 +109,6 @@ class Notes
     public function setClassId(int $class_id): self
     {
         $this->class_id = $class_id;
-
-        return $this;
-    }
-
-    public function getNoteMoyenne(): ?float
-    {
-        return $this->note_moyenne;
-    }
-
-    public function setNoteMoyenne(?float $note_moyenne): self
-    {
-        $this->note_moyenne = $note_moyenne;
 
         return $this;
     }

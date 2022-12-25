@@ -22,6 +22,9 @@ class Classe
     #[ORM\Column]
     private ?int $professeur_id = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $trimestre = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Classe
     public function setProfesseurId(int $professeur_id): self
     {
         $this->professeur_id = $professeur_id;
+
+        return $this;
+    }
+
+    public function getTrimestre(): ?int
+    {
+        return $this->trimestre;
+    }
+
+    public function setTrimestre(?int $trimestre): self
+    {
+        $this->trimestre = $trimestre;
 
         return $this;
     }
