@@ -108,6 +108,8 @@ edit class informations
                                                      <p class="small mb-0"> Hello {{ app.user.username }}, <br/>
                                                      --> Vous pouvez ajouter l’ensemble des données en rapport avec l’élève.
                                                      <br/>-->Vous pouvez remplir partiellement le formulaire (juste le(s) champs nécessaire(s))
+                                                     <br/>-> Vous pouvez aussi saisir les champs de notes qui existent déjà pour changer les valeurs.
+                                                     <br/>-> Attention : La virgule se représente en un point '.' et ne pas ',' Pour les nombres décimaux.
                                                      <br/>-->La note moyenne est calculée automatiquement (la moyenne des notes en prenant en considération leurs coefficients. En revanche, vous pouvez la changer s’il y a d’autres niveaux d’évaluations de cette note (discipline …)
                                                      <br/>-->l’élève id se trouve à gauche du nom et prénom de l’élève dans la table d’informations en bas.
                                                      <br/>--> Si vous rencontrez un problème technique merci de contacter l’équipe support</p>
@@ -166,7 +168,7 @@ edit class informations
     <div class="m-4">
                  <a href="/edit-class-students/{{ id_class }}" class="btn btn-primary m-4"> Ajouter/Supprimer un élève dans cette classe </a>
                  <a href="/class/{{ id_class }}" class="btn btn-primary m-3"> Consulter les données de cette classe </a>
-                 <a href="#" class="btn btn-primary m-3"> Consulter les statistiques de cette classe</a>
+                 <a href="/class-statistics/{{ id_class }}" class="btn btn-primary m-3"> Consulter les statistiques de cette classe</a>
                  <a href="/students-list" class="btn btn-primary m-3"> Liste des eleves</a>
         </div>
 {% endblock %}

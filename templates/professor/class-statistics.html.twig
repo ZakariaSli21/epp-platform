@@ -1,0 +1,120 @@
+{# templates/professor/class-statistics.html.twig #}
+{% extends 'professor/base.html.twig' %}
+
+{% block title %}
+ {{ class_name }} statistics
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets/css/login.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"><a href="#page-top">Espace porfesseur</a></li>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li class="sidebar-brand"><a href="#page-top"> Hello {{ app.user.username }}</a></li>
+        {% endif %}<li class="sidebar-nav-item"><a href="/professor-home"> Espace Professeur Home  </a></li>
+            <li class="sidebar-nav-item"><a href="/create-class"> Ajouter une classe</a></li>
+            <li class="sidebar-nav-item"><a href="/professor-add-student"> Ajouter un élève </a></li>
+            <li class="sidebar-nav-item"><a href="{{ path('app_logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+    <!-- breadcrumb -->
+    <nav style="--bs-breadcrumb-divider: '>'; margin: 2%;">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/professor-home">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Les statistiques de la classe : {{ class_name }}</li>
+      </ol>
+    </nav>
+    <div class="row">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-6">
+      <h4 class ="text-center mb-4"> Class : {{ class_name }}</h4>
+      <table class="table table-striped table-hover table-students text-center m-4">
+          <thead>
+            <tr>
+              <th scope="col" class ="text-center"> Les statistiques </th>
+              <th scope="col" class ="text-center"> La valeur </th>
+            </tr>
+          </thead>
+          <tbody>
+                <tr>
+                    <td class="text-center">    La meilleure note </td>
+                    <td class="text-center">    {{ note_max }} </td>
+                </tr>
+                <tr>
+                    <td class="text-center">    La mauvaise note </td>
+                    <td class="text-center">    {{ note_min }} </td>
+                </tr>
+                <tr>
+                    <td class="text-center">    La moyenne de la classe </td>
+                    <td class="text-center">    {{ note_moy }} </td>
+                </tr>
+                <tr>
+                    <td class="text-center">    Elève(s) avec la meilleure note  </td>
+                    <td class="text-center">
+                        {% for inf in student_max %}
+                               {{ inf.nom }} {{ inf.prenom }}
+                               <br/>
+                        {% endfor %}
+                   </td>
+                </tr>
+                <tr>
+                    <td class="text-center">    Elève(s) avec la mauvaise note  </td>
+                    <td class="text-center">
+                        {% for inf in student_min %}
+                               {{ inf.nom }} {{ inf.prenom }}
+                               <br/>
+                        {% endfor %}
+                   </td>
+                </tr>
+                <tr>
+                    <td class="text-center">    Nombre d'élèves de la classe </td>
+                    <td class="text-center">    {{ nbr_student }} </td>
+                </tr>
+                <tr>
+                    <td class="text-center">    Nombre d'élèves avec une note plus que la moyenne (>=10) </td>
+                    <td class="text-center">    {{ nbr_reu }} </td>
+                </tr>
+                <tr>
+                    <td class="text-center">    Nombre d'élèves avec une note plus que la moyenne de classe </td>
+                    <td class="text-center">    {{ nbr_reu_moy }} </td>
+                </tr>
+                <tr>
+                    <td class="text-center">    Nombre d'élèves avec une note moins que la moyenne (>=10) </td>
+                    <td class="text-center">    {{ nbr_echec }} </td>
+                </tr>
+                <tr>
+                    <td class="text-center">    Pourcentage reussite (note >=10) </td>
+                    <td class="text-center">    {{ perc_reu }}% </td>
+                </tr>
+                <tr>
+                    <td class="text-center">    Nombre d'élèves absents au moins une fois  </td>
+                    <td class="text-center">    {{ nbr_abs }} </td>
+                </tr><tr>
+                    <td class="text-center">    Elève(s) avec le plus d'absences </td>
+                    <td class="text-center">
+                        {% for inf in student_abs %}
+                               {{ inf.nom }} {{ inf.prenom }}
+                               <br/>
+                        {% endfor %}
+                   </td>
+                    </td>
+                </tr>
+          </tbody>
+        </table>
+      <div class="col-sm-3">
+      </div>
+    </div>
+
+    <div class="m-4">
+                 <a href="/edit-class-students/{{ id_class }}" class="btn btn-primary m-4"> Ajouter/Supprimer un élève dans cette classe </a>
+                 <a href="/edit-class-informations/{{ id_class }}" class="btn btn-primary m-4"> Editer les données de cette classe </a>
+                 <a href="/class/{{ id_class }}" class="btn btn-primary m-4"> Consulter les données de cette classe</a>
+                 <a href="/students-list" class="btn btn-primary m-4"> Liste des eleves</a>
+    </div>
+{% endblock %}

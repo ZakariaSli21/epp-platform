@@ -39,6 +39,7 @@ class NotesRepository extends ServiceEntityRepository
         }
     }
 
+    // retourne les notes d'une classe
     public function findByClassId($value): array
     {
             return $this->createQueryBuilder('n')
@@ -50,6 +51,7 @@ class NotesRepository extends ServiceEntityRepository
                     ;
     }
 
+    //retourne les notes d'un eleve donné dans une classe donnée
     public function findOneByClassId_StudentId($c_id ,$s_id): ?Notes
     {
             return $this->createQueryBuilder('tab')
@@ -60,6 +62,34 @@ class NotesRepository extends ServiceEntityRepository
                                    ])
                     ->getQuery()
                     ->getOneOrNullResult()
+                    ;
+    }
+
+    // retourne le (s) etudiant(s) qui ont la note passer en argument
+    public function findStudentByNote($class_id, $note): array
+    {
+            return $this->createQueryBuilder('n')
+                        ->andWhere('n.class_id = :val')
+                        ->andWhere('n.note = :note')
+                        ->setParameter('val', $class_id)
+                        ->setParameter('note', $note)
+                        ->getQuery()
+                        ->getResult()
+
+                    ;
+    }
+
+    // retourne le (s) etudiant(s) qui ont le nombre d'absences passe en arguments
+    public function findStudentByAbsence($class_id, $nbr_absence): array
+    {
+            return $this->createQueryBuilder('n')
+                        ->andWhere('n.class_id = :val')
+                        ->andWhere('n.nbr_absences = :abs')
+                        ->setParameter('val', $class_id)
+                        ->setParameter('abs', $nbr_absence)
+                        ->getQuery()
+                        ->getResult()
+
                     ;
     }
 
