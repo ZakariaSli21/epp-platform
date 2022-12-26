@@ -36,6 +36,18 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
          - { path: ^/professor-home, roles: ROLE_PROFESSOR }
+         - { path: ^/professor-add-student , roles: ROLE_PROFESSOR }
+         - { path: ^/students-list , roles: ROLE_PROFESSOR }
+         - { path: ^/create-class , roles: ROLE_PROFESSOR }
+         - { path: ^/edit-class-informations , roles: ROLE_PROFESSOR }
+         - { path: ^/class , roles: ROLE_PROFESSOR }
+         - { path: ^/edit-class-students , roles: ROLE_PROFESSOR }
+         - { path: ^/class-statistics , roles: ROLE_PROFESSOR }
+         - { path: ^/parent-home, roles: ROLE_STUDENT }
+         - { path: ^/consult-notes, roles: ROLE_STUDENT }
+         - { path: ^/consult-notes/trimestre, roles: ROLE_STUDENT }
+         - { path: ^/consult-bulletin, roles: ROLE_STUDENT }
+         - { path: ^/consult-bulletin/trimestre, roles: ROLE_STUDENT }
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:

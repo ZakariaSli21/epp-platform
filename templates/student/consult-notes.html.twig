@@ -42,9 +42,10 @@ Consult notes {{ app.user.username }}
               <th scope="col"> coef 3  </th>
               <th scope="col"> nombre d'absences</th>
               <th scope="col"> La moyenne finale  </th>
-              <th scope="col">ceofficient note </th>
-              <th scope="col">Username professeur </th>
-              <th scope="col">commentaire de professeur </th>
+              <th scope="col"> ceofficient note </th>
+              <th scope="col"> trimestre</th>
+              <th scope="col"> username professeur </th>
+              <th scope="col"> commentaire de professeur </th>
             </tr>
           </thead>
           <tbody>
@@ -62,6 +63,7 @@ Consult notes {{ app.user.username }}
                           <td>{{ inf.notes.nbrAbsences }}</td>
                           <td>{{ inf.notes.note }}</td>
                           <td>{{ inf.notes.coefMoyenne }}</td>
+                          <td>{{ inf.classe.trimestre }}</td>
                           <td>{{ inf.professorName }}</td>
                           <td>{{ inf.notes.professorCommentaire }}</td>                          {% set i = i + 1 %}
                     </tr>

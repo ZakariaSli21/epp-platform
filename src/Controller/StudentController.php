@@ -90,7 +90,7 @@ class StudentController extends AbstractController
         return new JsonResponse($json);
     }
 
-    #[Route('/consult-bulletin/trimestre/{id}', name: 'app_consult_bulletin_page')]
+    #[Route('/consult-bulletin/trimestre/{id}', name: 'app_consult_bulletin_trimestre_page')]
     public function bulletin_trimestre_page(int $id, BulletinService $bulletinService, ClassStatisticsService $classStatisticsService, StudentNotesService $studentNotesService, UserRepository $userRepository, NotesRepository $notesRepository, ClasseRepository $classeRepository, StudentRepository $studentRepository): Response
     {
         $student = $studentRepository->findOneByEmail($this->getUser()->getEmail());
