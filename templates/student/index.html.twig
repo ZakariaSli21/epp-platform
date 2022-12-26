@@ -18,7 +18,7 @@ Espace parent : home page
             <li class="sidebar-brand"><a href="#page-top"> Parent {{ app.user.username }}</a></li>
         {% endif %}
             <li class="sidebar-nav-item"><a href="/consult-notes"> Acceder aux notes annuelle </a></li>
-            <li class="sidebar-nav-item"><a href="#"> Acceder au bulletin annuel </a></li>
+            <li class="sidebar-nav-item"><a href="/consult-bulletin"> Acceder au bulletin annuel </a></li>
             <li class="sidebar-nav-item"><a href="#contact"> Notes/Bulletin trimestriels </a></li>
             <li class="sidebar-nav-item"><a href="{{ path('app_logout') }}">Logout</a></li>
         </ul>
@@ -33,7 +33,7 @@ Espace parent : home page
                          cette page ou le navbar en haut à droite.
                          </em></h3>
                          <a class="btn btn-primary btn-xl" href="/consult-notes">Acceder aux notes annuelle</a>
-                         <a class="btn btn-primary btn-xl" href="">Acceder au bulletin annuel</a>
+                         <a class="btn btn-primary btn-xl" href="/consult-bulletin">Acceder au bulletin annuel</a>
                      </div>
                  </header >
                  <h4 class="m-4 text-center"> Données trimestrielles </h4>
@@ -42,7 +42,7 @@ Espace parent : home page
                             <h5 class="card-title text-center mb-4">Trimestre 1</h5>
                             <div class="text-center">
                                 <a href="/consult-notes/trimestre/1" class="btn btn-primary mr-1"> Note du trimsetre</a>
-                                <a href="#" class="ml-1 btn btn-primary"> Bulletin trimestriel</a>
+                                <a href="/consult-bulletin/trimestre/1" class="ml-1 btn btn-primary"> Bulletin trimestriel</a>
                             </div>
                           </div>
                  </div>
@@ -51,7 +51,7 @@ Espace parent : home page
                             <h5 class="card-title text-center mb-4">Trimestre 2</h5>
                             <div class="text-center">
                                  <a href="/consult-notes/trimestre/2" class="btn btn-primary mr-1"> Note du trimsetre</a>
-                                 <a href="#" class="ml-1 btn btn-primary"> Bulletin trimestriel</a>
+                                 <a href="/consult-bulletin/trimestre/2" class="ml-1 btn btn-primary"> Bulletin trimestriel</a>
                             </div>
                           </div>
                  </div>
@@ -60,7 +60,7 @@ Espace parent : home page
                             <h5 class="card-title text-center mb-4">Trimestre 3</h5>
                             <div class="text-center">
                               <a href="/consult-notes/trimestre/3" class="btn btn-primary mr-1"> Note du trimsetre</a>
-                              <a href="#" class="ml-1 btn btn-primary"> Bulletin trimestriel</a>
+                              <a href="/consult-bulletin/trimestre/2" class="ml-1 btn btn-primary"> Bulletin trimestriel</a>
                             </div>
                           </div>
                  </div>

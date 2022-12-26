@@ -18,14 +18,14 @@ Consult notes {{ app.user.username }}
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <li class="sidebar-brand"><a href="#page-top"> Hello {{ app.user.username }}</a></li>
         {% endif %}<li class="sidebar-nav-item"><a href="/parent-home"> Espace Parent Home  </a></li>
-            <li class="sidebar-nav-item"><a href="#"> Acceder au bulletin annuel</a></li>
+            <li class="sidebar-nav-item"><a href="/consult-bulletin"> Acceder au bulletin annuel </a></li>
             <li class="sidebar-nav-item"><a href="{{ path('app_logout') }}">Logout</a></li>
         </ul>
     </nav>
     <nav style="--bs-breadcrumb-divider: '>'; margin: 2%;">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/parent-home">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Les note annuelle de  : {{ student_name }}</li>
+        <li class="breadcrumb-item active" aria-current="page">Les notes annuelles de  : {{ student_name }}</li>
       </ol>
     </nav>
     <h1 class="text-center mt-4 mb-4"> Les notes de : {{ student_name }}  </h1>
@@ -69,8 +69,11 @@ Consult notes {{ app.user.username }}
           </tbody>
         </table>
         <div class="row">
-              <div class="col-sm-8">
+              <div class="col">
                     <a href="/parent-home" class="btn btn-primary m-4"> Retourner à la page d'acceuil (Espace Parent)</a>
+              </div>
+              <div class="col">
+                    <a href="/consult-bulletin" class="btn btn-primary m-4"> Consulter le bulletin annuel </a>
               </div>
               <div class="col-sm-2">
                     <h5 class="text-center border border-dark border-2"> Moyenne generale : </h5>

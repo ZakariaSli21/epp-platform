@@ -1,12 +1,13 @@
 <?php
 
-// src/Service/MessageGenerator.php
+// src/Service/StudentNotesService.php
 namespace App\Service;
 
-use App\Repository\StudentRepository;
+use App\Entity\Student;
 use App\Repository\ClasseRepository;
 use App\Repository\NotesRepository;
-use App\Entity\Student;
+use App\Repository\UserRepository;
+use App\Entity\NotesDetails;
 
 class StudentNotesService
 {
@@ -64,4 +65,42 @@ class StudentNotesService
 
                 return $note_total/$coef_sum;
         }
+
+        public function getNotesDetailsByTrimestre(ClasseRepository $classeRepository, UserRepository $userRepository, int $id, $notes): array
+        {
+                $notesDetails = [];
+
+                 foreach ($notes as $note) {
+                     $class_id = $note->getClassId();
+                     $classe = $classeRepository->findOneByClassId($class_id);
+                     $professor = $userRepository->getUserbyId($classe->getProfesseurId());
+                     if($classe->getTrimestre()==$id){
+                        $notes_d = new NotesDetails();
+                        $notes_d->setNotes($note);
+                        $notes_d->setClasse($classe);
+                        $notes_d->setProfessorName($professor->getUsername());
+                        array_push($notesDetails, $notes_d);
+                     }
+                 }
+                 return $notesDetails;
+        }
+
+        public function getNotesDetails(ClasseRepository $classeRepository, UserRepository $userRepository, $notes): array
+        {
+                $notesDetails = [];
+
+                 foreach ($notes as $note) {
+                     $class_id = $note->getClassId();
+                     $classe = $classeRepository->findOneByClassId($class_id);
+                     $professor = $userRepository->getUserbyId($classe->getProfesseurId());
+                     $notes_d = new NotesDetails();
+                     $notes_d->setNotes($note);
+                     $notes_d->setClasse($classe);
+                     $notes_d->setProfessorName($professor->getUsername());
+                     array_push($notesDetails, $notes_d);
+
+                 }
+                 return $notesDetails;
+        }
+
 }
