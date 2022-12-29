@@ -102,7 +102,7 @@ class StudentController extends AbstractController
         $bulletin = $bulletinService->getJsonBulletinByTrimestre($id, $studentNotesService, $classStatisticsService, $classeRepository, $userRepository, $notesRepository, $notes);
 
         $json = [
-             'Bulletin : ' => 'annuel',
+             'Bulletin : ' => 'trimestriel',
              'Nom Prenom d eleve' => $student_name,
              'Details notes : ' => $bulletin,
              'Moyenne generale : ' => number_format($moyenne_generale, 2, '.', '')
