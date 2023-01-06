@@ -28,7 +28,7 @@ class BulletinService
                 $json =[
                         'Matiere' => $note->getClasse()->getName(),
                         'Coefficient' => $note->getNotes()->getCoefMoyenne(),
-                        'Moyenne' => $note->getNotes()->getCoefMoyenne(),
+                        'Moyenne' => $note->getNotes()->getNote(),
                         'Moyenne notes classe' => number_format($moy_class, 2, '.', ''),
                         'Min notes classe' =>  number_format($min_class, 2, '.', ''),
                         'Max notes classe' =>  number_format($max_class, 2, '.', ''),
@@ -55,7 +55,7 @@ class BulletinService
                 $json =[
                         'Matiere' => $note->getClasse()->getName(),
                         'Coefficient' => $note->getNotes()->getCoefMoyenne(),
-                        'Moyenne' => $note->getNotes()->getCoefMoyenne(),
+                        'Moyenne' => $note->getNotes()->getNote(),
                         'Moyenne notes classe' => number_format($moy_class, 2, '.', ''),
                         'Min notes classe' =>  number_format($min_class, 2, '.', ''),
                         'Max notes classe' =>  number_format($max_class, 2, '.', ''),
